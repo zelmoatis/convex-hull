@@ -8,7 +8,9 @@ const int SCREEN_HEIGHT = 480;
 
 int main( int argc, char const *argv[] ) {
 
-	SDL_Window *window;
+	SDL_Window     *window;
+    SDL_Renderer   *renderer;
+    SDL_Event      event;
 
     SDL_Init( SDL_INIT_VIDEO );            
 
@@ -28,9 +30,27 @@ int main( int argc, char const *argv[] ) {
         return 0;
     }
 
-    // The window is open: could enter program loop here (see SDL_PollEvent())
+    renderer = SDL_CreateRenderer( window, -1, 0 );
 
-    SDL_Delay( 3000 );  // Pause execution for 3000 milliseconds, for example
+    while( true ) {
+
+        SDL_WaitEvent( &event );
+        if ( event.type == SDL_QUIT ) {
+            break;
+        }
+
+        // Select the color for drawing. It is set to red here.
+        SDL_SetRenderDrawColor( renderer, 255, 0, 0, 255 );
+
+        // Clear the entire screen to our selected color.
+        SDL_RenderClear( renderer );
+
+        // Up until now everything was drawn behind the scenes.
+        // This will show the new, red contents of the window.
+        SDL_RenderPresent( renderer );
+
+        
+    }  
 
     // Close and destroy the window
 
