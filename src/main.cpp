@@ -1,8 +1,11 @@
-#include <SDL2/SDL.h>
-#include <stdio.h>
+#include "App.h"
+
+#include <bits/stdc++.h>
 
 int main(int argc, char** argv) {
-  SDL_Init(SDL_INIT_EVERYTHING);
+  App* app = App::Instance();
+
+  app->Start();
 
   return 0;
 }
