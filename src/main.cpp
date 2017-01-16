@@ -5,7 +5,7 @@
 int main(int argc, char** argv) {
   App* app = App::Instance();
 
-  /* app->Start(); */
+  app->Start();
 
   Point p1(2, 3);
   Point p2(6, 9);

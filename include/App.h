@@ -1,14 +1,22 @@
 #ifndef APP_H
 #define APP_H
 
-#include "Point.h"
+#include "Polygon.h"
 
 #include <vector>
 
 class App {
   public:
     static App* Instance();
+
+    void Init(int n, int m);
     void Start();
+
+    void receivePolygons(const Polygon& pol1, const Polygon& pol2);
+    void receiveHull(const Polygon& hull);
+
+    bool showHull(bool flip);
+    bool isHullShown();
 
   private:
     App();
@@ -17,7 +25,8 @@ class App {
     App& operator=(const App& other);
 
   private:
-    std::vector<Point> pol1, pol2, hull;
+    Polygon _pol1, _pol2, _hull;
+    bool _isHullShown;
 };
 
 #endif

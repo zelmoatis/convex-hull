@@ -61,3 +61,20 @@ void App::Start() {
 
   SDL_Quit();
 }
+
+void App::receivePolygons(const Polygon& pol1, const Polygon& pol2) {
+  _pol1 = pol1;
+  _pol2 = pol2;
+}
+
+void App::receiveHull(const Polygon& hull) {
+  _hull = hull;
+}
+
+bool App::showHull(bool flip) {
+  _isHullShown = flip;
+}
+
+bool App::isHullShown() {
+  return _isHullShown;
+}

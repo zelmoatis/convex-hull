@@ -6,8 +6,8 @@ Point::Point() {
 }
 
 Point::Point(double x, double y) {
-  this->_x = x;
-  this->_y = y;
+  _x = x;
+  _y = y;
 }
 
 double det(const Point& A, const Point& B, const Point& C) {
