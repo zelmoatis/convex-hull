@@ -9,9 +9,12 @@ class Point {
     friend bool cmp(const Point& O, const Point& A, const Point& B);
     friend double det(const Point& A, const Point& B, const Point& C);
 
+    double getX();
+    double getY();
+
   private:
-    double x;
-    double y;
+    double _x;
+    double _y;
 };
 
 #endif
