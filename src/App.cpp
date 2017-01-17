@@ -39,13 +39,15 @@ void App::Start() {
     SDL_RenderClear(_renderer);
 
     if (_isHullShown) {
-      SDL_SetRenderDrawColor(_renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
+      SDL_SetRenderDrawColor(_renderer, 255, 0, 0, SDL_ALPHA_OPAQUE);
       std::vector<Point> points = _hull.getPoints();
       std::vector<Line> lines = _hull.getLines();
 
       for (int i = 0; i < points.size(); i++) {
         SDL_RenderDrawPoint(_renderer, points[i].getX(), points[i].getY());
       }
+
+      SDL_SetRenderDrawColor(_renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
 
       for (int i = 0; i < lines.size(); i++) {
         Point start = lines[i].getStartPoint();
@@ -69,7 +71,7 @@ void App::Start() {
             finish.getX(), finish.getY());
       }
 
-      SDL_SetRenderDrawColor(_renderer, 255, 255, 0, SDL_ALPHA_OPAQUE);
+      SDL_SetRenderDrawColor(_renderer, 255, 0, 255, SDL_ALPHA_OPAQUE);
 
       for (int i = 0; i < l2.size(); i++) {
         Point start  = l2[i].getStartPoint();
