@@ -56,7 +56,7 @@ int main(int argc, char** argv) {
   for ( int i = 1; i <= n; i++ ) {
     double x, y;
     fin >> x >> y;
-    
+
     Line newLine;
     newLine.setStartPoint( v1[ x - 1 ] );
     newLine.setFinishPoint( v1[ y - 1 ] );
@@ -68,12 +68,12 @@ int main(int argc, char** argv) {
   for (int i = 1; i <= n; i++) {
     double x, y;
     fin >> x >> y;
-    
+
     Point newPoint;
     newPoint.setX( x * 50 + 100 );
     newPoint.setY( y * 50 + 100 );
     v2.push_back( newPoint );
-    
+
     v[ i + n ].setX(x * 50 + 100);
     v[ i + n ].setY(y * 50 + 100);
   }
@@ -81,11 +81,11 @@ int main(int argc, char** argv) {
   for ( int i = 1; i <= n; i++ ) {
     double x, y;
     fin >> x >> y;
-    
+
     Line newLine;
     newLine.setStartPoint( v2[ x - 1 ] );
     newLine.setFinishPoint( v2[ y - 1] );
-  
+
     l2.push_back( newLine );
   }
 
@@ -111,11 +111,11 @@ int main(int argc, char** argv) {
     st[++head] = v[i];
   }
 
-  //std::cout << std::fixed;
-  //std::cout << head << "\n";
-  for (int i = head; i >= 1; i--) {
-    //std::cout << std::setprecision(9) << st[i] << "\n";
-  }
+  /* //std::cout << std::fixed; */
+  /* //std::cout << head << "\n"; */
+  /* for (int i = head; i >= 1; i--) { */
+  /*   //std::cout << std::setprecision(9) << st[i] << "\n"; */
+  /* } */
 
   Line lines[head + 1];
   for (int i = head, j = 1; i >= 1; i--, j++) {
@@ -127,9 +127,9 @@ int main(int argc, char** argv) {
     }
   }
 
-  for (int i = 1; i <= 6; i++) {
-    //std::cout << lines[i].getStartPoint() << " " << lines[i].getFinishPoint() << "\n";
-  }
+  /* for (int i = 1; i <= 6; i++) { */
+  /*   //std::cout << lines[i].getStartPoint() << " " << lines[i].getFinishPoint() << "\n"; */
+  /* } */
 
   Polygon hull(n * 2, v, head, lines);
   Polygon p1( v1, l1 );
