@@ -43,25 +43,25 @@ int main(int argc, char** argv) {
   for (int i = 1; i <= n; i++) {
     double x, y;
     fin >> x >> y;
-	Point newPoint;
-	newPoint.setX( x * 50 + 100 );
-	newPoint.setY( y * 50 + 100 );
-	v1.push_back( newPoint );
+    Point newPoint;
+    newPoint.setX( x * 50 + 100 );
+    newPoint.setY( y * 50 + 100 );
+    v1.push_back( newPoint );
 
-	v[ i ].setX( x * 50 + 100 );
+    v[ i ].setX( x * 50 + 100 );
     v[ i ].setY( y * 50 + 100 );
 
   }
 
   for ( int i = 1; i <= n; i++ ) {
-  	double x, y;
-  	fin >> x >> y;
-  	
-  	Line newLine;
-  	newLine.setStartPoint( v1[ x - 1 ] );
-  	newLine.setFinishPoint( v1[ y - 1 ] );
+    double x, y;
+    fin >> x >> y;
+    
+    Line newLine;
+    newLine.setStartPoint( v1[ x - 1 ] );
+    newLine.setFinishPoint( v1[ y - 1 ] );
 
-  	l1.push_back( newLine );
+    l1.push_back( newLine );
   }
 
   fin >> n;
@@ -71,7 +71,7 @@ int main(int argc, char** argv) {
     
     Point newPoint;
     newPoint.setX( x * 50 + 100 );
-	newPoint.setY( y * 50 + 100 );
+    newPoint.setY( y * 50 + 100 );
     v2.push_back( newPoint );
     
     v[ i + n ].setX(x * 50 + 100);
@@ -79,14 +79,14 @@ int main(int argc, char** argv) {
   }
 
   for ( int i = 1; i <= n; i++ ) {
-  	double x, y;
-  	fin >> x >> y;
-  	
-  	Line newLine;
-  	newLine.setStartPoint( v2[ x - 1 ] );
-  	newLine.setFinishPoint( v2[ y - 1] );
+    double x, y;
+    fin >> x >> y;
+    
+    Line newLine;
+    newLine.setStartPoint( v2[ x - 1 ] );
+    newLine.setFinishPoint( v2[ y - 1] );
   
-  	l2.push_back( newLine );
+    l2.push_back( newLine );
   }
 
   std::cout << "Am pus toate datele\n";
