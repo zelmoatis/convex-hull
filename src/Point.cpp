@@ -10,6 +10,18 @@ Point::Point(double x, double y) {
   _y = y;
 }
 
+Point::Point(const Point& other) {
+  _x = other._x;
+  _y = other._y;
+}
+
+Point& Point::operator=(const Point& other) {
+  _x = other._x;
+  _y = other._y;
+
+  return *this;
+}
+
 double det(const Point& A, const Point& B, const Point& C) {
   return (B._x - A._x) * (C._y - A._y) - (B._y - A._y) * (C._x - A._x);
 }
