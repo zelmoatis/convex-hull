@@ -22,3 +22,19 @@ Line& Line::operator=(const Line& other) {
 
   return *this;
 }
+
+Point Line::getStartPoint() {
+  return _start;
+}
+
+Point Line::getFinishPoint() {
+  return _finish;
+}
+
+void Line::setStartPoint(const Point& start) {
+  _start = start;
+}
+
+void Line::setFinishPoint(const Point& finish) {
+  _finish = finish;
+}

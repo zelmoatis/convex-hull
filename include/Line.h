@@ -15,6 +15,9 @@ class Line {
     Point getStartPoint();
     Point getFinishPoint();
 
+    void setStartPoint(const Point& start);
+    void setFinishPoint(const Point& finish);
+
   private:
     Point _start;
     Point _finish;

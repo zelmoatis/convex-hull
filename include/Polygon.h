@@ -13,6 +13,9 @@ class Polygon {
     Polygon(const Polygon& other);
     Polygon& operator=(const Polygon& other);
 
+    std::vector<Point> getPoints();
+    std::vector<Line> getLines();
+
   private:
     std::vector<Point> _points;
     std::vector<Line> _lines;

@@ -1,9 +1,7 @@
 #include "App.h"
 
-#include <SDL2/SDL.h>
-
-#define SCREEN_WIDTH 640
-#define SCREEN_HEIGHT 480
+#define SCREEN_WIDTH 1024
+#define SCREEN_HEIGHT 768
 
 App::App() {
 
@@ -19,47 +17,62 @@ App* App::Instance() {
   return &instance;
 }
 
-void App::Start() {
+void App::Init() {
+  _width = SCREEN_WIDTH;
+  _height = SCREEN_HEIGHT;
+
   if (SDL_Init(SDL_INIT_VIDEO) == 0) {
-    SDL_Window* window = nullptr;
-    SDL_Renderer* renderer = nullptr;
+    _window = nullptr;
+    _renderer = nullptr;
 
-    if (SDL_CreateWindowAndRenderer(SCREEN_WIDTH, SCREEN_HEIGHT, 0,
-          &window, &renderer) == 0) {
-      SDL_bool done = SDL_FALSE;
+    SDL_CreateWindowAndRenderer(_width, _height, 0, &_window, &_renderer);
+  }
+}
 
-      while (!done) {
-        SDL_Event event;
+void App::Start() {
+  SDL_bool done = SDL_FALSE;
 
-        SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
-        SDL_RenderClear(renderer);
+  while (!done) {
+    SDL_Event event;
 
-        SDL_SetRenderDrawColor(renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
-        SDL_RenderDrawLine(renderer, 320, 200, 300, 240);
-        SDL_RenderDrawLine(renderer, 300, 240, 340, 240);
-        SDL_RenderDrawLine(renderer, 340, 240, 320, 200);
-        SDL_RenderDrawPoint(renderer, 100, 100);
-        SDL_RenderDrawLine(renderer, 100, 100, 320, 200);
+    SDL_SetRenderDrawColor(_renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
+    SDL_RenderClear(_renderer);
 
-        SDL_RenderPresent(renderer);
+    SDL_SetRenderDrawColor(_renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
 
-        while (SDL_PollEvent(&event)) {
-          if (event.type == SDL_QUIT) {
-            done = SDL_TRUE;
-          }
-        }
+    if (_isHullShown) {
+      std::vector<Point> points = _hull.getPoints();
+      std::vector<Line> lines = _hull.getLines();
+
+      for (int i = 0; i < points.size(); i++) {
+        SDL_RenderDrawPoint(_renderer, points[i].getX(), points[i].getY());
+      }
+
+      for (int i = 0; i < lines.size(); i++) {
+        Point start = lines[i].getStartPoint();
+        Point finish = lines[i].getFinishPoint();
+        SDL_RenderDrawLine(_renderer, start.getX(), start.getY(),
+            finish.getX(), finish.getY());
+      }
+
+      SDL_RenderPresent(_renderer);
+    }
+
+    while (SDL_PollEvent(&event)) {
+      if (event.type == SDL_QUIT) {
+        done = SDL_TRUE;
       }
     }
-
-    if (renderer) {
-      SDL_DestroyRenderer(renderer);
-    }
-    if (window) {
-      SDL_DestroyWindow(window);
-    }
   }
+}
 
-  SDL_Quit();
+void App::Quit() {
+  if (_renderer) {
+    SDL_DestroyRenderer(_renderer);
+  }
+  if (_window) {
+    SDL_DestroyWindow(_window);
+  }
 }
 
 void App::receivePolygons(const Polygon& pol1, const Polygon& pol2) {

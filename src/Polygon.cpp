@@ -10,10 +10,10 @@ Polygon::Polygon(const std::vector<Point>& points, const std::vector<Line>& line
 }
 
 Polygon::Polygon(int n, Point* points, int m, Line* lines) {
-  for (int i = 0; i < n; i++) {
+  for (int i = 1; i <= n; i++) {
     _points.push_back(points[i]);
   }
-  for (int i = 0; i < m; i++) {
+  for (int i = 1; i <= m; i++) {
     _lines.push_back(lines[i]);
   }
 }
@@ -28,4 +28,12 @@ Polygon& Polygon::operator=(const Polygon& other) {
   _lines = other._lines;
 
   return *this;
+}
+
+std::vector<Point> Polygon::getPoints() {
+  return _points;
+}
+
+std::vector<Line> Polygon::getLines() {
+  return _lines;
 }
