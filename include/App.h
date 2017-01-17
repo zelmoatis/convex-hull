@@ -1,7 +1,11 @@
 #ifndef APP_H
 #define APP_H
 
-#include <SDL2/SDL.h>
+#if defined(__linux__) || defined(__APPLE__)
+  #include <SDL2/SDL.h>
+#elif defined(_WIN32)
+  #include <SDL.h>
+#endif
 
 #include "Polygon.h"
 
