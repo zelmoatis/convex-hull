@@ -38,9 +38,8 @@ void App::Start() {
     SDL_SetRenderDrawColor(_renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
     SDL_RenderClear(_renderer);
 
-    SDL_SetRenderDrawColor(_renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
-
     if (_isHullShown) {
+      SDL_SetRenderDrawColor(_renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
       std::vector<Point> points = _hull.getPoints();
       std::vector<Line> lines = _hull.getLines();
 
@@ -56,12 +55,49 @@ void App::Start() {
       }
 
       SDL_RenderPresent(_renderer);
+
+    } else {
+      std::vector< Line > l1 = _pol1.getLines();
+      std::vector< Line > l2 = _pol2.getLines();
+
+      SDL_SetRenderDrawColor(_renderer, 255, 255, 0, SDL_ALPHA_OPAQUE);
+
+      for (int i = 0; i < l1.size(); i++) {
+        Point start  = l1[i].getStartPoint();
+        Point finish = l1[i].getFinishPoint();
+        SDL_RenderDrawLine(_renderer, start.getX(), start.getY(),
+            finish.getX(), finish.getY());
+      }
+
+      SDL_SetRenderDrawColor(_renderer, 255, 255, 0, SDL_ALPHA_OPAQUE);
+
+      for (int i = 0; i < l2.size(); i++) {
+        Point start  = l2[i].getStartPoint();
+        Point finish = l2[i].getFinishPoint();
+        SDL_RenderDrawLine(_renderer, start.getX(), start.getY(),
+            finish.getX(), finish.getY());
+      }
+
+      SDL_RenderPresent(_renderer);
     }
 
     while (SDL_PollEvent(&event)) {
       if (event.type == SDL_QUIT) {
         done = SDL_TRUE;
-      }
+      } else {
+        if( event.type == SDL_KEYDOWN ) {
+            //Select surfaces based on key press
+            switch( event.key.keysym.sym ) {
+                case SDLK_p:
+                  _isHullShown = !_isHullShown;
+                break;
+
+                case SDLK_ESCAPE:
+                  done = SDL_TRUE;
+                break;
+            }
+          }
+        }
     }
   }
 }
