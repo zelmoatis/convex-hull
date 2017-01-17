@@ -1,3 +1,7 @@
+# Convex Hull
+
+The project consists in finding the convex hull of two polygons and displaying it using SDL2.
+
 Install and configure dependecies
 =================================
 
@@ -8,7 +12,7 @@ Usage
 =====
 
     make
-    ./acoperire.out
+    ./hull.out
 
 Press **P** to switch between the available modes:
 - Display the two polygons
