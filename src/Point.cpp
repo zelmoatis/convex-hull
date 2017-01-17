@@ -52,3 +52,17 @@ void Point::setX(double x) {
 void Point::setY(double y) {
   _y = y;
 }
+
+void Point::draw(SDL_Renderer* renderer) {
+  const int Dx[] = {-1, 0, 1};
+  const int Dy[] = {-1, 0, 1};
+
+  for (int i = 0; i < 3; i++) {
+    for (int j = 0; j < 3; j++) {
+      int x = _x + Dx[i];
+      int y = _y + Dy[j];
+
+      SDL_RenderDrawPoint(renderer, x, y);
+    }
+  }
+}
