@@ -113,9 +113,9 @@ int main(int argc, char** argv) {
 
   //std::cout << std::fixed;
   //std::cout << head << "\n";
-  for (int i = head; i >= 1; i--) {
-    //std::cout << std::setprecision(9) << st[i] << "\n";
-  }
+  // for (int i = head; i >= 1; i--) {
+  //   //std::cout << std::setprecision(9) << st[i] << "\n";
+  // }
 
   Line lines[head + 1];
   for (int i = head, j = 1; i >= 1; i--, j++) {
@@ -127,13 +127,13 @@ int main(int argc, char** argv) {
     }
   }
 
-  for (int i = 1; i <= 6; i++) {
-    //std::cout << lines[i].getStartPoint() << " " << lines[i].getFinishPoint() << "\n";
-  }
+  // for (int i = 1; i <= 6; i++) {
+  //   //std::cout << lines[i].getStartPoint() << " " << lines[i].getFinishPoint() << "\n";
+  // }
 
   Polygon hull(n * 2, v, head, lines);
   Polygon p1( v1, l1 );
-  Polygon p2( v1, l2 );
+  Polygon p2( v2, l2 );
 
   app->receivePolygons( p1, p2 );
 
