@@ -1,5 +1,7 @@
 #include "Point.h"
 
+#include <iostream>
+
 Point::Point() {
   _x = 0;
   _y = 0;
@@ -22,18 +24,31 @@ Point& Point::operator=(const Point& other) {
   return *this;
 }
 
-double det(const Point& A, const Point& B, const Point& C) {
-  return (B._x - A._x) * (C._y - A._y) - (B._y - A._y) * (C._x - A._x);
+bool Point::operator<(const Point& other) {
+  if (_x == other._x) {
+    return _y < other._y;
+  }
+  return _x < other._x;
 }
 
-bool cmp(const Point& O, const Point& A, const Point& B) {
-  return det(O, A, B) < 0;
+std::ostream& operator<<(std::ostream& out, const Point& point) {
+  out << point._x << " " << point._y;
+
+  return out;
 }
 
-double Point::getX() {
+double Point::getX() const {
   return _x;
 }
 
-double Point::getY() {
+double Point::getY() const {
   return _y;
+}
+
+void Point::setX(double x) {
+  _x = x;
+}
+
+void Point::setY(double y) {
+  _y = y;
 }
