@@ -1,6 +1,12 @@
 #ifndef POINT_H
 #define POINT_H
 
+#if defined(__linux__) || defined(__APPLE__)
+  #include <SDL2/SDL.h>
+#elif defined(_WIN32)
+  #include <SDL.h>
+#endif
+
 #include <iostream>
 
 class Point {
@@ -21,6 +27,8 @@ class Point {
 
     void setX(double x);
     void setY(double y);
+
+    void draw(SDL_Renderer* renderer);
 
   private:
     double _x;
