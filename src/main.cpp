@@ -8,14 +8,9 @@
 #include "App.h"
 #include "Point.h"
 
-std::ifstream fin("input/date1.in");
-
 const int MAX_N = 120005;
 
 int n;
-
-// Point v1[ MAX_N ];
-// Point v2[ MAX_N ];
 std::vector< Point > v1;
 std::vector< Point > v2;
 
@@ -38,6 +33,13 @@ int main(int argc, char** argv) {
 
   App* app = App::Instance();
   app->Init();
+
+  /* Default file number */
+  std::string file_number = "1";
+  if (argc > 1) {
+    file_number = argv[1];
+  }
+  std::ifstream fin("input/date" + file_number + ".in");
 
   fin >> n;
   for (int i = 1; i <= n; i++) {
@@ -88,8 +90,6 @@ int main(int argc, char** argv) {
 
     l2.push_back( newLine );
   }
-
-  std::cout << "Am pus toate datele\n";
 
   int pos = 1;
   for (int i = 2; i <= n * 2; i++) {
