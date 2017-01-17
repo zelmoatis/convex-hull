@@ -26,6 +26,7 @@ void App::Init() {
     _renderer = nullptr;
 
     SDL_CreateWindowAndRenderer(_width, _height, 0, &_window, &_renderer);
+    SDL_SetWindowTitle(_window, "Convex Hull");
   }
 }
 
