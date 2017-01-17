@@ -2,14 +2,12 @@
 
 The project consists in finding the convex hull of two polygons and displaying it using SDL2.
 
-Install and configure dependecies
-=================================
+## Install and configure dependecies
 
     sudo chmod +x setup.sh
     sudo ./setup.sh
 
-Usage
-=====
+## Usage
 
     make
     ./hull.out
